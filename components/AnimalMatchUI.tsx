@@ -7,7 +7,11 @@ import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 const ANIMALS = ['Armadillo', 'BaldEagle', 'Bison', 'BlackBear', 'HornedToad', 'JackRabbit', 'MountainLion', 'PrairieDog', 'RoadRunner', 'Salamander'];
 
-const AnimalMatchUI = forwardRef((_, ref) => {
+export interface AnimalMatchUIRef {
+    handleRandomize: () => void;
+}
+
+const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
     const [headIndex, setHeadIndex] = useState(0);
     const [bodyIndex, setBodyIndex] = useState(0);
     const [tailIndex, setTailIndex] = useState(0);
@@ -17,7 +21,7 @@ const AnimalMatchUI = forwardRef((_, ref) => {
     const tailRef = useRef<HTMLDivElement>(null);
 
     const animalStep = async (
-        ref: React.RefObject<HTMLDivElement>,
+        ref: React.RefObject<HTMLDivElement | null>,
         setter: (callback: (prev: number) => number) => void,
         part: '01' | '02' | '03',
         direction: 'up' | 'down' = 'up'

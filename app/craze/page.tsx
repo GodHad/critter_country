@@ -2,12 +2,12 @@
 import { useState, useRef } from 'react';
 import PageWrapper from '@/components/PageWrapper';
 import InstructionPanel from '@/components/InstructionPanel';
-import AnimalMatchUI from '@/components/AnimalMatchUI';
+import AnimalMatchUI,  { AnimalMatchUIRef } from '@/components/AnimalMatchUI';
 import Sidebar from '@/components/Sidebar';
 
 export default function CritterCrazePage() {
     const [showInstruction, setShowInstruction] = useState(true);
-    const animalRef = useRef(null);
+    const animalRef = useRef<AnimalMatchUIRef>(null);
 
     const handleCloseInstructions = () => {
         setShowInstruction(false);
