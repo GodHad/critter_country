@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-const ANIMALS = ['Armadillo', 'BaldEagle', 'Bison', 'BlackBear', 'HornedToad', 'JackRabbit', 'MountainLion', 'PrairieDog', 'RoadRunner', 'Salamander'];
+const ANIMALS = ['Armadillo', 'BaldEagle', 'Bison', 'BlackBear', 'HornedToad', 'Jackrabbit', 'MountainLion', 'PrairieDog', 'RoadRunner', 'Salamander'];
 
 export interface AnimalMatchUIRef {
     handleRandomize: () => void;
