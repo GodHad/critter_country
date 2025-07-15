@@ -5,9 +5,11 @@ import HomeButton from '@/components/HomeButton';
 import PageWrapper from '@/components/PageWrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTurnDown } from '@fortawesome/free-solid-svg-icons';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 export default function MenuPage() {
     const router = useRouter();
+    const playClickSound = useSoundEffect('/sounds/button2.mp3');
 
     return(
         <PageWrapper>
@@ -17,6 +19,7 @@ export default function MenuPage() {
                 <div className="flex gap-20 px-20">
                     <div 
                         className="bg-white rounded-[40px] w-[550px] shadow-xl outline outline-[15px] outline-[#5A2D10]/70 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden"
+                        onClick={playClickSound}
                     >
                         <Image 
                             src="/images/home/CritterConnectionsLogo.png"
@@ -51,7 +54,10 @@ export default function MenuPage() {
 
                     <div
                         className="bg-white rounded-[40px] w-[550px] shadow-xl outline outline-[15px] outline-[#5A2D10]/70 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden"
-                        onClick={() => router.push('/craze')}
+                        onClick={() => {
+                            playClickSound();
+                            router.push('/craze');
+                        }}
                     >
                         <Image 
                             src="/images/home/CritterCrazeLogo.png"

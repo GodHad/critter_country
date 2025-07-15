@@ -4,11 +4,13 @@ import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap';
 import { useRouter } from 'next/navigation';
+import { useSoundEffect } from "@/hooks/useSoundEffect";
 
 export default function Home() {
   const titleRef = useRef(null);
   const buttonRef = useRef(null);
   const router = useRouter();
+  const playClickSound = useSoundEffect('/sounds/button2.mp3');
 
   useEffect(() => {
     gsap.fromTo(
@@ -21,6 +23,7 @@ export default function Home() {
 
   const handleClick = () => {
     const btn = buttonRef.current;
+    playClickSound();
     gsap.to(btn, {
       scale: 0.92,
       duration: 0.1,

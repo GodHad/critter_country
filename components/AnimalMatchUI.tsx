@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 const ANIMALS = ['Armadillo', 'BaldEagle', 'Bison', 'BlackBear', 'HornedToad', 'Jackrabbit', 'MountainLion', 'PrairieDog', 'RoadRunner', 'Salamander'];
 
@@ -15,10 +16,14 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
     const [headIndex, setHeadIndex] = useState(0);
     const [bodyIndex, setBodyIndex] = useState(0);
     const [tailIndex, setTailIndex] = useState(0);
+    const isFirstLoad = useRef(true);
 
     const headRef = useRef<HTMLDivElement>(null);
     const bodyRef = useRef<HTMLDivElement>(null);
     const tailRef = useRef<HTMLDivElement>(null);
+
+    const playShuffleSound = useSoundEffect('/sounds/shuffle3.mp3');
+    const playClickSound = useSoundEffect('/sounds/button2.mp3');;
 
     const animalStep = async (
         ref: React.RefObject<HTMLDivElement | null>,
@@ -26,6 +31,7 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
         part: '01' | '02' | '03',
         direction: 'up' | 'down' = 'up'
     ) => {
+        playClickSound();
         setter(prevIndex => {
             let nextIndex = direction == 'up' ? prevIndex - 1 : prevIndex + 1;
             if(nextIndex < 0) nextIndex = ANIMALS.length - 1;
@@ -50,6 +56,10 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
     };
 
     const handleRandomize = async () => {
+        if(!isFirstLoad.current) {
+            playShuffleSound();
+        }
+        isFirstLoad.current = false;
         let localHead = headIndex;
         let localBody = bodyIndex;
         let localTail = tailIndex;
