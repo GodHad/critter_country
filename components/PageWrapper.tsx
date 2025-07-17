@@ -1,15 +1,27 @@
 'use client'
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect } from 'react';
 import gsap from 'gsap';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function PageWrapper({ children }: { children: React.ReactNode }) {
     const ref = useRef(null);
+    const router = useRouter();
+    const pathname = usePathname();
 
     useLayoutEffect(() => {
         if(!ref.current) return
         gsap.fromTo(ref.current, {opacity: 0}, {opacity: 1, duration: 0.6, ease: 'power2.out'})
     }, [])
+
+    useEffect(() => {
+        if(pathname == '/') return;
+        const timer = setTimeout(() => {
+            router.push('/');
+        }, 5 * 60 * 1000);
+
+        return () => clearTimeout(timer);
+    }, [pathname, router]);
 
     return (
         <div className='w-screen h-screen flex items-center justify-center overflow-hidden'>

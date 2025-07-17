@@ -21,6 +21,9 @@ export default function CritterCrazePage() {
         if(animalRef.current) {
             animalRef.current.handleRandomize();
         }
+        if(showInstruction == true) {
+            setShowInstruction(false)
+        }
     };
 
     return (

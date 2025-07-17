@@ -31,7 +31,7 @@ export default function HomeButton({ className = 'absolute top-15 left-15' }: Ho
             duration: 0.2,
             ease: 'power2.out',
             onComplete: () => {
-                router.push('/');
+                router.push('/menu');
             },
         });
     }
@@ -40,7 +40,7 @@ export default function HomeButton({ className = 'absolute top-15 left-15' }: Ho
         <button
             ref={buttonRef}
             onClick={handleClick}
-            className={`${className} z-50 p-4 rounded-full bg-white text-[#691b14] text-3xl shadow-md transition-transform cursor-pointer`}
+            className={`${className} z-50 p-4 rounded-full bg-white text-[#691B12] text-3xl shadow-md transition-transform cursor-pointer`}
             aria-label='Go to home'
         >
             <FontAwesomeIcon icon={faHouse} />

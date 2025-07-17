@@ -17,6 +17,7 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
     const [bodyIndex, setBodyIndex] = useState(0);
     const [tailIndex, setTailIndex] = useState(0);
     const isFirstLoad = useRef(true);
+    const mainref = useRef(null);
 
     const headRef = useRef<HTMLDivElement>(null);
     const bodyRef = useRef<HTMLDivElement>(null);
@@ -85,6 +86,10 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
         }
     };
 
+    useEffect(() => {
+        gsap.fromTo(mainref.current,{ opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' });
+    }, []);
+
     useImperativeHandle(ref, () => ({
         handleRandomize,
     }));
@@ -94,7 +99,7 @@ const AnimalMatchUI = forwardRef<AnimalMatchUIRef>((_, ref) => {
     }, []);
 
     return (
-        <div className='bg-[#F8A834] rounded-[40px] shadow-xl outline outline-[15px] outline-[#5A2D10]/70 w-[1108px] h-[825px] flex flex-col justify-between'>
+        <div ref={mainref} className='bg-[#F8A834] rounded-[40px] shadow-xl outline outline-[15px] outline-[#691B12] w-[1108px] h-[825px] flex flex-col justify-between'>
             <div className='flex overflow-hidden'>
                 <button onClick={() => animalStep(headRef, setHeadIndex, '01', 'up')} className='w-[306px] text-[#F8A834] border-b-2 border-r-2 border-[#5A2D10] rounded-tl-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
                     <FontAwesomeIcon 

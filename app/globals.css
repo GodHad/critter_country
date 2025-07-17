@@ -5,11 +5,19 @@
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: Corndog;
+  src: url('/public/fonts/Corndog.woff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-outfit: var(--font-outfit);
   --font-alfa: var(--font-alfa);
+  --font-corndog: var(--font-corndog);
 }
 
 @media (prefers-color-scheme: dark) {

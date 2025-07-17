@@ -5,7 +5,7 @@ export const ANIMALS = [
         intro: 'Prairie dogs are stout-bodied rodents that are related to squirrels. They can grow up to 16 inches long and have a short tail. Their hair is short and brown in color and they have small rounded ears. They make burrows in the ground where they have their young. Their babies are called a litter, and they may have 4-5 young that are born in March or April. Prairie dogs live in large colonies or "towns". They are mostly herbivores eating low growing weeds and plants. You often see them laying or standing by their mounds watching for predators. Other animals such as burrowing owls and rabbits have been known to share their burrows.'
     },
     {
-        name: 'Bision',
+        name: 'Bison',
         image: '/images/animal_full/Bison.png',
         intro: "The American bison (Bison bison) is often called a buffalo. It is the national mammal of the United States and the largest land mammal in North America. The bison can stand about 6.5 feet tall, up to 12 feet long and weigh up to 2,000 pounds. They are herbivores, meaning they eat plants and eat up to 9 -11 hours a day. Even though they are large, they can run up to 35 miles per hour. The bison's large hump and neck muscles help to support the head. The bison uses its head to clear snow in the winter. The bison has long shaggy hair, and both male and  female have horns which can be used to protect themselves. Native Americans used the bison as a major food source and for clothing and tools."
     },
@@ -17,7 +17,7 @@ export const ANIMALS = [
     {
         name: 'Bald Eagle',
         image: '/images/animal_full/BaldEagle.png',
-        intro: "The bafd eagle is a large raptor or bird of prey that feeds on other animals. They are native to North America and can be distinguished by their white head. Their wingspan can be as much as 7.5 feet. They have a strong curved beak that is used for tearing prey, and curved black talons that can grip fish and other animals while in flight. Their large wings and feathers are ideal for soaring. Eagles usually build nests 4 to 6 feet wide and 1 to 2 feet tall. Eagles lay a clutch of 1 to 3 eggs with both parents sharing in the incubation and feeding of the young. It takes 35 days of incubation before the eggs hatch."
+        intro: "The bald eagle is a large raptor or bird of prey that feeds on other animals. They are native to North America and can be distinguished by their white head. Their wingspan can be as much as 7.5 feet. They have a strong curved beak that is used for tearing prey, and curved black talons that can grip fish and other animals while in flight. Their large wings and feathers are ideal for soaring. Eagles usually build nests 4 to 6 feet wide and 1 to 2 feet tall. Eagles lay a clutch of 1 to 3 eggs with both parents sharing in the incubation and feeding of the young. It takes 35 days of incubation before the eggs hatch."
     },
     {
         name: 'Salamander',

@@ -3,45 +3,49 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import AnimatedButton from './AnimatedButton';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 export default function InstructionPanel({ onClose }: { onClose: () => void }) {
   const ref = useRef(null);
+  const playClickSound = useSoundEffect('/sounds/button2.mp3');
 
   useEffect(() => {
-    gsap.fromTo(ref.current,{ x: 500, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6 });
+    gsap.fromTo(ref.current,{ opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' });
   }, []);
 
   const handleClose = () => {
+    playClickSound();
     gsap.to(ref.current, {
-      x: 500,
       opacity: 0,
-      duration: 0.5,
+      scale: 0.95,
+      duration: 0.3,
+      ease: 'power2.in',
       onComplete: onClose
     });
   };
 
   return (
-    <div ref={ref} className='bg-[#F8A834] rounded-[40px] shadow-xl outline outline-[15px] outline-[#5A2D10]/70 w-[1108px] h-[825px] flex flex-col justify-between'>
+    <div ref={ref} className='bg-[#F8A834] rounded-[40px] shadow-xl outline outline-[15px] outline-[#691B12] w-[1108px] h-[825px] flex flex-col justify-between'>
       <div className='flex overflow-hidden'>
-        <button className='w-[306px] text-[#F8A834] border-b-2 border-r-2 border-[#5A2D10] rounded-tl-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
+        <button onClick={handleClose} className='w-[306px] text-[#F8A834] border-b-2 border-r-2 border-[#691B12] rounded-tl-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
           <FontAwesomeIcon 
             icon={faCaretUp}
           />
         </button>
-        <button className='w-[316px] text-[#F8A834] border-b-2 border-[#5A2D10] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
+        <button onClick={handleClose} className='w-[316px] text-[#F8A834] border-b-2 border-[#691B12] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
           <FontAwesomeIcon 
             icon={faCaretUp}
           />
         </button>
-        <button className='w-[486px] text-[#F8A834] border-b-2 border-l-2 border-[#5A2D10] rounded-tr-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
+        <button onClick={handleClose} className='w-[486px] text-[#F8A834] border-b-2 border-l-2 border-[#691B12] rounded-tr-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
           <FontAwesomeIcon 
             icon={faCaretUp}
           />
         </button>
       </div>
 
-      <div className='relative p-15'>
-        <button onClick={handleClose} className='absolute top-3 left-15 pt-1 pb-2 px-4 rounded-full bg-white text-orange-500 text-3xl font-semibold shadow-md hover:scale-105 transition-transform cursor-pointer'>&times;</button>
+      <div className='relative px-15 pt-10'>
         <h1 className='text-7xl text-center !font-alfa font-extrabold text-[#8B4513] mb-6'>How to Play?</h1>
         <div className='bg-white py-6 px-20 rounded-[30px] text-center text-black font-outfit font-semibold leading-loose'>
           <p className='font-outfit text-orange-600 mb-2 text-3xl'>Mix it up!</p>
@@ -53,18 +57,20 @@ export default function InstructionPanel({ onClose }: { onClose: () => void }) {
         </div>
       </div>
 
+      <AnimatedButton onClick={handleClose} className='bg-[#691B12] text-white py-5 px-10 mt-8 font-corndog text-5xl text-center font-semibold mb-10 mx-auto rounded-[20px]'>Play Now!</AnimatedButton>
+
       <div className='flex overflow-hidden'>
-        <button className='w-[306px] text-[#F8A834] border-t-2 border-r-2 border-[#5A2D10] rounded-bl-[35px] bg-white text-6xl leadning-none shadow-md transition-transform cursor-pointer overflow-hidden'>
+        <button onClick={handleClose} className='w-[306px] text-[#F8A834] border-t-2 border-r-2 border-[#691B12] rounded-bl-[35px] bg-white text-6xl leadning-none shadow-md transition-transform cursor-pointer overflow-hidden'>
           <FontAwesomeIcon 
             icon={faCaretDown}
           />
         </button>
-        <button className='w-[316px] text-[#F8A834] border-t-2 border-[#5A2D10] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
+        <button onClick={handleClose} className='w-[316px] text-[#F8A834] border-t-2 border-[#691B12] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
           <FontAwesomeIcon 
             icon={faCaretDown}
           />
         </button>
-        <button className='w-[486px] text-[#F8A834] border-t-2 border-l-2 border-[#5A2D10] rounded-br-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
+        <button onClick={handleClose} className='w-[486px] text-[#F8A834] border-t-2 border-l-2 border-[#691B12] rounded-br-[35px] bg-white text-6xl leading-none shadow-md transition-transform cursor-pointer'>
           <FontAwesomeIcon 
             icon={faCaretDown}
           />

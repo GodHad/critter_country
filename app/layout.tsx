@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
+import { corndog } from "./fonts";
 
 const outfit = Outfit({
   variable: '--font-outfit',
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} font-outfit ${alfa.variable}`}>
+    <html lang="en" className={`${outfit.variable} font-outfit ${alfa.variable} ${corndog.variable}`}>
       <body>
         {children}
       </body>
