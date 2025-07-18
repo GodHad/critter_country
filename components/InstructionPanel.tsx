@@ -47,7 +47,7 @@ export default function InstructionPanel({ onClose }: { onClose: () => void }) {
 
       <div className='relative px-15 pt-10'>
         <h1 className='text-7xl text-center font-corndog font-extrabold text-[#8B4513] mb-6'>How to Play?</h1>
-        <div className='bg-white py-6 px-20 rounded-[30px] text-center text-black font-outfit font-semibold leading-loose'>
+        <div className='bg-white py-6 px-20 rounded-[30px] text-center text-[#691B12] font-outfit font-semibold leading-loose'>
           <p className='font-outfit text-[#ED9D1A] mb-2 text-3xl'>Mix it up!</p>
           <p className='font-outfit text-2xl'>Use the up and down arrows to swap animal <br /> parts and build your own wild critter.</p>
           <p className='text-[#ED9D1A] mt-4 mb-2 text-3xl'>Want to learn more?</p>

@@ -19,7 +19,7 @@ const AnimalDetailCard = forwardRef<HTMLDivElement, {
                     style={{ transform: 'rotateY(180deg)' }}
                 >
                     <h2 className="text-6xl font-bold mb-5 mt-10 text-[#691b14] w-5/6 text-start">{animal.name}</h2>
-                    <Image src={animal.image} alt={animal.name} width={ (animal.name == 'Jackrabbit' || animal.name == 'Bison' ) ? 400 : 500} height={300} />
+                    <Image src={animal.image} alt={animal.name} width={ (animal.name == 'Jackrabbit' || animal.name == 'Bison' ) ? 400 : 570} height={300} />
                     <p className="text-xl leading-relaxed w-5/6 mx-auto overflow-hidden mt-5 mb-5">{streamText}</p>
                     <button onClick={onClose} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#FFBAB3] text-3xl flex items-center justify-center text-white font-bold cursor-pointer hover:scale-105">&times;</button>
                 </div>
