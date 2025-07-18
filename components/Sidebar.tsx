@@ -19,7 +19,7 @@ export default function Sidebar({ onInstructionClick, onRandomize }: { onInstruc
                 </div>
                 <AnimatedButton onClick={() => router.push('/craze/explore')} className='px-8 py-4 text-3xl w-full font-outfit font-semibold bg-white text-[#691B12] rounded-full shadow-lg cursor-pointer hover:scale-102'>Explore Animals</AnimatedButton>
             </div>
-            <AnimatedButton onClick={onRandomize} className='px-8 py-4 text-5xl font-corndog bg-white text-orange-400 rounded-[20px] shadow-lg cursor-pointer hover:scale-102'>Random Animal Generator</AnimatedButton>
+            <AnimatedButton onClick={onRandomize} className='px-8 py-4 text-5xl font-corndog bg-white text-[#ED9D1A] rounded-[20px] shadow-lg cursor-pointer hover:scale-102'>Random Animal Generator</AnimatedButton>
         </div>
     );
 }
