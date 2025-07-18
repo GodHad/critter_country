@@ -64,16 +64,20 @@ export default function Explore() {
 
     const showStreamText = (text: string) => {
         let i = 0;
+        let currentText = '';
         setStreamText('');
-        if(intervalRef.current) clearInterval(intervalRef.current)
+        if (intervalRef.current) clearInterval(intervalRef.current);
+
         intervalRef.current = setInterval(() => {
-            setStreamText(prev => prev + text[i]);
-            i ++;
-            if(i >= text.length - 1) {
-                if(intervalRef.current) clearInterval(intervalRef.current)
+            currentText += text[i];
+            setStreamText(currentText);
+            i++;
+            if (i >= text.length) {
+                clearInterval(intervalRef.current!);
             }
-        }, 5);
+        }, 5); 
     };
+
 
     const handleSelect = (animal: typeof ANIMALS[0], index: number) => {
         gsap.to(cardRefs.current, {
