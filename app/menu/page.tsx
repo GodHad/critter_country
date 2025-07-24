@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import HomeButton from '@/components/HomeButton';
 import PageWrapper from '@/components/PageWrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTurnDown } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +17,10 @@ export default function MenuPage() {
                 <div className="flex gap-20 px-20">
                     <div 
                         className="bg-white rounded-[40px] w-[550px] shadow-xl outline outline-[15px] outline-[#691B12] flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden"
-                        onClick={playClickSound}
+                        onClick={() => {
+                            playClickSound();
+                            router.push('/connections');
+                        }}
                     >
                         <Image 
                             src="/images/home/CritterConnectionsLogo.png"
