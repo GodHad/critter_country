@@ -46,11 +46,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-Hello, Sir.
-I think there are many rules on Fiverr site and chatbox of the Fiverr site is not convenient.
-I'd like to communicate and work outside.
-What do you think about this?
-I'll respect your suggestion.
-This is my contact information
-Whatsapp:  +1 (551) 207-6500
-Telegram: blockhades

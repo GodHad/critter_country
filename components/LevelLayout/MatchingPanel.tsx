@@ -6,6 +6,7 @@ import AnswerPanel from './AnswerPanel';
 import CompletionModal from './CompletionModal';
 import { TargetSlotRef } from './TargetSlot';
 import { LEVELS } from '@/data/levels';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 export default function MatchingPanel({level, onPlayAgain}: {level: number; onPlayAgain: () => void;}) {
     const router = useRouter();
@@ -15,6 +16,7 @@ export default function MatchingPanel({level, onPlayAgain}: {level: number; onPl
     const [correctCount, setCorrectCount] = useState(0);
     const [hasSelectedTarget, setHasSelectedTarget] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const playCompleteSound = useSoundEffect('/sounds/complete.mp3');
 
     const levelData = LEVELS[level - 1];
 
@@ -54,7 +56,10 @@ export default function MatchingPanel({level, onPlayAgain}: {level: number; onPl
             setCorrectCount(prev => {
                 const newCount = prev + 1;
                 if((level == 6 && newCount == totalTargets / 2) || (newCount == totalTargets)) {
-                    setTimeout(() => setCompleted(true), 500);
+                    setTimeout(() => {
+                        playCompleteSound();
+                        setCompleted(true), 500
+                    });
                 }
                 setSelectedIndex(null);
                 setHasSelectedTarget(false);

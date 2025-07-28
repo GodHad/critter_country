@@ -2,6 +2,7 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 export interface TargetSlotRef {
     checkAnswer: (answer: string, validAnswers?: string[]) => boolean;
@@ -15,6 +16,8 @@ const TargetSlot = forwardRef<TargetSlotRef, { answer: string; isGroupSlot?: boo
     const [status, setStatus] = useState<'empty' | 'selected' | 'correct' | 'wrong'>('empty');
     const [filledAnswer, setFilledAnswer] = useState<string | null>(answer ?? null);
     const refDiv = useRef<HTMLDivElement | null>(null);
+    const playCorrectSound = useSoundEffect('/sounds/correct.mp3');
+    const playIncorrectSound = useSoundEffect('/sounds/incorrect.mp3');
 
     useImperativeHandle(ref, () => ({
         checkAnswer: (selected: string, validAnswers: string[] = []) => {
@@ -23,12 +26,13 @@ const TargetSlot = forwardRef<TargetSlotRef, { answer: string; isGroupSlot?: boo
             const isCorrect = validAnswers.includes(selected);
             if(isCorrect) {
                 setFilledAnswer(selected);
+                playCorrectSound();
                 setStatus('correct');
                 return true;
             } else {
+                playIncorrectSound();
                 setStatus('wrong');
                 gsap.fromTo(refDiv.current, { x: -5 }, { x: 5, repeat: 5, yoyo: true, duration: 0.05 });
-                // setTimeout(() => setStatus('empty'), 300);
                 return false;
             }
         },
