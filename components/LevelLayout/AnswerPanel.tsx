@@ -3,7 +3,6 @@ import { useRef, useEffect, useState } from 'react';
 import AnswerItem from './AnswerItem';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 function shuffleArray<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
@@ -17,17 +16,27 @@ export default function AnswerPanel({
   const panelRef = useRef<HTMLDivElement | null>(null);
   const [shuffledItems, setShuffledItems] = useState<(string | string[])[]>(() => shuffleArray(levelData.items));
   const [hiddenPairs, setHiddenPairs] = useState<Record<number, boolean>>({});
-  const playClatterSound = useSoundEffect('/sounds/clatter.mp3');
+  const [editButton, setEditButton] = useState(false);
+  const [show, setShow] = useState(false);
+  const audio = new Audio('/sounds/clatter.mp3');
 
   const isLevel6 = levelData.layout === 'or-group';
-  
+
+  useEffect(() => {
+    const element = document.getElementById('clatter');
+    if (editButton && element) {
+      element.click();
+    }
+  }, [editButton]);
+
   useEffect(() => {
     const items = panelRef.current?.querySelectorAll(
       '.answer-item'
     ) as NodeListOf<HTMLDivElement>;
     if (!items || items.length === 0) return;
-
-    playClatterSound();
+    setTimeout(() => {
+      setEditButton(true);
+    }, 100);
     gsap.set(items, { y: -300, opacity: 0 });
     requestAnimationFrame(() => {
       gsap.to(items, {
@@ -40,12 +49,20 @@ export default function AnswerPanel({
     });
   }, []);
 
+  const handlePlaySound = () => {
+    audio.play().catch(err => console.warn('Autoplay failed:', err));
+    setShow(true);
+  };
+
   const hidePair = (index: number) => {
     setHiddenPairs((prev) => ({ ...prev, [index]: true }));
   };
 
   return (
     <div className="w-[480px] h-full relative">
+      <button id="clatter" onClick={handlePlaySound} className="invisible absolute">
+        Play
+      </button>
       <Image
         src="/images/home/SmallTray_Levels.png"
         alt="AnswerPanel"

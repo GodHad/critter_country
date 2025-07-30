@@ -30,13 +30,31 @@ export default function FreePlayPage() {
   const [imageSlotMap, setImageSlotMap] = useState({});
   const router = useRouter();
   const playClatterSound = useSoundEffect('/sounds/clatter.mp3');
+  const [editButton, setEditButton] = useState(false);
+  const [show, setShow] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  
+  useEffect(() => {
+    const audioInstance = new Audio('/sounds/clatter.mp3');
+    setAudio(audioInstance);
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(ref.current, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' });
   }, []);
 
   useEffect(() => {
+    const element = document.getElementById('clatter');
+    if (editButton && element) {
+      element.click();
+    }
+  }, [editButton]);
+
+  useEffect(() => {
     if (!panelRef.current) return;
+    setTimeout(() => {
+      setEditButton(true);
+    }, 100);
     gsap.fromTo(
       panelRef.current.children,
       { y: -300, opacity: 0 },
@@ -50,6 +68,11 @@ export default function FreePlayPage() {
       playClatterSound();
     setAnimals(sortArrayAlphabetically(ANIMALS));
     setRenderKey(prev => prev + 1);
+  };
+
+  const handlePlaySound = () => {
+    audio!.play().catch(err => console.warn('Autoplay failed:', err));
+    setShow(true);
   };
 
   return (
@@ -70,6 +93,9 @@ export default function FreePlayPage() {
         </div>
 
         <div className='w-[950px] h-full flex flex-col justify-between items-center'>
+          <button id="clatter" onClick={handlePlaySound} className="invisible absolute">
+          Play
+        </button>
           <div className='relative w-full h-[700px]'>
             <Image src='/images/home/LargeTray_FreePlay.png' alt='Free Play' width={950} height={700} className='absolute left-0 top-0 h-full object-cover' />
             <div ref={panelRef} className='w-full h-full grid grid-cols-6 gap-2 pb-15 px-15 pt-20'>

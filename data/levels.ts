@@ -27,7 +27,7 @@ export const LEVELS = [
         ],
         items: ['Grass', 'Grasshopper', 'PrairieDog', 'Rabbit', 'Fox', 'Coyote', 'MountainLion'],
         layout: 'branch',
-        hintText: 'Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
+        hintText: 'Tap a spot, then tap an animal or plant to place it. Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
     },
     {
         level: 4,
@@ -41,7 +41,7 @@ export const LEVELS = [
         ],
         items: ['Grass', 'Mouse', 'Rabbit', 'Snake', 'Bobcat', 'Hawk', 'MountainLion'],
         layout: 'branch',
-        hintText: 'Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
+        hintText: 'Tap a spot, then tap an animal or plant to place it. Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
     },
     {
         level: 5,
@@ -55,7 +55,7 @@ export const LEVELS = [
         ],
         items: ['WaterGrass', 'Tadpole', 'Minnow', 'Mouse', 'Snake', 'Heron', 'RoadRunner', 'BaldEagle'],
         layout: 'branch',
-        hintText: 'Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
+        hintText: 'Tap a spot, then tap an animal or plant to place it. Some spots are grouped - these show where multiple animals can fit, because they play the same role in the food chain'
     },
     {
         level: 6,
@@ -63,7 +63,7 @@ export const LEVELS = [
         slots: [{answer: ['Grass', 'Weeds']}, {answer: ['Grasshopper', 'Mouse']}, {answer: ['Bird', 'Rat']}, {answer: ['Snake', 'Opossum']}, {answer: ['Coyote', 'Hawk']}],
         items: [['Grass', 'Weeds'], ['Grasshopper', 'Mouse'], ['Bird', 'Rat'], ['Snake', 'Opossum'], ['Coyote', 'Hawk']],
         layout: 'or-group',
-        hintText: "Each spot has two correct choices - pick the one you like best! There isn't just one food chain in the nature - there are many paths energy can take. But remember: your choice must go in the correct step in the chain!"
+        hintText: "Tap a spot, then tap an animal or plant to place it. Each spot has two correct choices - pick the one you like best! There isn't just one food chain in the nature - there are many paths energy can take. But remember: your choice must go in the correct step in the chain!"
     }
 ]
 
