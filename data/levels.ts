@@ -5,7 +5,7 @@ export const LEVELS = [
         slots: [{answer: 'Grass'}, {answer: 'Grasshopper'}, {answer: 'Mouse'}, {answer: 'Snake'}, {answer: 'Hawk'}],
         items: ['Grass', 'Grasshopper', 'Mouse', 'Snake', 'Hawk'],
         layout: 'vertical',
-        hintText: ''
+        hintText: 'Tap a spot, then tap an animal or plant to place it'
     },
     {
         level: 2,
@@ -13,7 +13,7 @@ export const LEVELS = [
         slots: [{answer: 'WaterGrass'}, {answer: 'Tadpole'}, {answer: 'Fish'}, {answer: 'Turtle'}, {answer: 'Raccoon'}],
         items: ['WaterGrass', 'Tadpole', 'Fish', 'Turtle', 'Raccoon'],
         layout: 'vertical',
-        hintText: ''
+        hintText: 'Tap a spot, then tap an animal or plant to place it'
     },
     {
         level: 3,

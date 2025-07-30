@@ -29,7 +29,7 @@ const ImagePosition = [
     {
         width: 220,
         height: 150,
-        className: 'bottom-[-70px] right-[-10px] rotate-35'
+        className: 'bottom-[-75px] right-[-10px] rotate-35'
     },
     {
         width: 270,

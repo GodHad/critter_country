@@ -69,7 +69,7 @@ export default function CompletionModal({ level, onPlayAgain, onClose }: { level
                     />
                 </AnimatedButton>
                 <div className="flex justify-between items-center gap-5 w-[400px] mx-auto">
-                    <AnimatedButton onClick={handleClose} className="bg-white w-full text-4xl text-[#691B12] font-medium rounded-full py-3 px-8">Menu</AnimatedButton>
+                    <AnimatedButton onClick={handleClose} className="bg-white w-full text-4xl text-[#691B12] font-medium rounded-full py-3 px-8">Levels</AnimatedButton>
                     <div className="relative">
                         <HomeButton className="top-0 left-0" />
                     </div>

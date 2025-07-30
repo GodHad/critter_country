@@ -26,13 +26,13 @@ export default function Connections() {
             <div className="relative flex w-full h-full flex-col justify-between py-15">
                 <div ref={titleRef} className='flex flex-col justify-start mx-auto'>
                     <Image src="/images/home/CritterConnections_HorizontalLogo.png" alt="Connections Logo" width={1000} height={500} />
-                    <p className='text-3xl font-bold text-[#691B12] text-center mt-5'>Choose any level to begin. We recommend starting with Level1!<br />Or try Free Play to build your own food chains!</p>
+                    <p className='text-3xl font-bold text-[#691B12] text-center mt-5'>Choose any level to begin. We recommend starting with Level&nbsp;1!<br />Or try Free Play to build your own food chains!</p>
                 </div>
                 <div ref={slideRef}>
                     <Slider />
                 </div>
                 <div ref={buttonRef} className='mx-auto'>
-                    <AnimatedButton onClick={() => router.push('/connections/freeplay')} className='w-[450px] px-8 py-4 mx-auto text-4xl font-corndog font-semibold bg-white text-[#816327] rounded-[20px] shadow-lg cursor-pointer hover:scale-102'>Free Play</AnimatedButton>
+                    <AnimatedButton onClick={() => router.push('/connections/freeplay')} className='w-[600px] px-8 py-4 mx-auto text-5xl font-corndog font-semibold bg-white text-[#816327] rounded-[20px] shadow-lg cursor-pointer hover:scale-102'>Free Play</AnimatedButton>
                 </div>
                 <HomeButton />
             </div>

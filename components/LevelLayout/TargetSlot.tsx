@@ -37,7 +37,10 @@ const TargetSlot = forwardRef<TargetSlotRef, { answer: string; isGroupSlot?: boo
             }
         },
         setSelected: () => {
-            if (status === 'empty') setStatus('selected');
+            if (status === 'empty') {
+                playCorrectSound();
+                setStatus('selected');
+            }
         },
         setEmpty: () => {
             if (status === 'selected') setStatus('empty');

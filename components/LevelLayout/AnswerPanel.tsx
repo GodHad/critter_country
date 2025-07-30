@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import AnswerItem from './AnswerItem';
 import Image from 'next/image';
 import gsap from 'gsap';
+import { useSoundEffect } from '@/hooks/useSoundEffect';
 
 function shuffleArray<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
@@ -16,6 +17,7 @@ export default function AnswerPanel({
   const panelRef = useRef<HTMLDivElement | null>(null);
   const [shuffledItems, setShuffledItems] = useState<(string | string[])[]>(() => shuffleArray(levelData.items));
   const [hiddenPairs, setHiddenPairs] = useState<Record<number, boolean>>({});
+  const playClatterSound = useSoundEffect('/sounds/clatter.mp3');
 
   const isLevel6 = levelData.layout === 'or-group';
   
@@ -25,8 +27,8 @@ export default function AnswerPanel({
     ) as NodeListOf<HTMLDivElement>;
     if (!items || items.length === 0) return;
 
+    playClatterSound();
     gsap.set(items, { y: -300, opacity: 0 });
-
     requestAnimationFrame(() => {
       gsap.to(items, {
           y: 0,

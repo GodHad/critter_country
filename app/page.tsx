@@ -44,8 +44,11 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="relative w-full h-full flex flex-col items-center justify-center">
-        <div className="absolute top-6 left-6">
-          <Image src="/images/home/home_logo.png" alt="Museum logo" width={140} height={140} />
+        <div className="absolute top-5 left-6">
+          <Image src="/images/home/home_logo.png" alt="Museum logo" width={160} height={140} />
+        </div>
+        <div className="absolute top-9 right-5">
+          <Image src="/images/home/right_logo.png" alt="Museum logo" width={290} height={140} />
         </div>
 
         <div ref={titleRef} className="w-[60%] max-w-[1000px]">

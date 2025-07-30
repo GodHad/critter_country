@@ -17,7 +17,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     useEffect(() => {
         if(pathname == '/') return;
         const timer = setTimeout(() => {
-            router.push('/');
+            // router.push('/');
         }, 5 * 60 * 1000);
 
         return () => clearTimeout(timer);
