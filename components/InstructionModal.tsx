@@ -25,7 +25,7 @@ export default function InstructionModal({ visible, onClose }: { visible: boolea
         <div ref={ref} className='fixed px-15 py-10 left-1/2 top-1/2 -translate-y-[50%] -translate-x-1/2 bg-[#F8A834] rounded-[40px] shadow-xl w-[1150px] h-[800px] flex flex-col justify-between z-[9999]'>
             <h1 className='text-7xl text-center font-corndog font-extrabold text-[#8B4513] mb-8'>How to Play?</h1>
             <div className='bg-white py-10 px-20 rounded-[30px] text-center text-[#691B12] font-outfit font-semibold leading-loose'>
-                <p className='font-outfit text-[#ED9D1A] mb-2 text-3xl'>Try Creating your own food chain!<br/>*Drag a Piece*</p>
+                <p className='font-outfit text-[#ED9D1A] mb-2 text-3xl'>Try Creating your own food chain!<br/>Drag a Piece</p>
                 <p className='font-outfit text-2xl'>Grab an animal or plant and drag it onto the board to get started.</p>
                 <p className='text-[#ED9D1A] mt-4 mb-2 text-3xl'>Build a Chain</p>
                 <p className='font-outfit text-2xl'>Use the grid to help line up your food chain.<br/>Add more pieces to show who eats what, filling in the food chain from plants to predators.</p>
