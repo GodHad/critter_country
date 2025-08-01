@@ -63,7 +63,7 @@ export const LEVELS = [
         slots: [{answer: ['Grass', 'Weeds']}, {answer: ['Grasshopper', 'Mouse']}, {answer: ['Bird', 'Rat']}, {answer: ['Snake', 'Opossum']}, {answer: ['Coyote', 'Hawk']}],
         items: [['Grass', 'Weeds'], ['Grasshopper', 'Mouse'], ['Bird', 'Rat'], ['Snake', 'Opossum'], ['Coyote', 'Hawk']],
         layout: 'or-group',
-        hintText: "Tap a spot, then tap an animal or plant to place it. Each spot has two correct choices - pick the one you like best! There isn't just one food chain in the nature - there are many paths energy can take. But remember: your choice must go in the correct step in the chain!"
+        hintText: "Tap a spot, then tap an animal or plant to place it. Each spot has two correct choices - pick the one you like best! There isn't just one food chain in nature - there are many paths energy can take. But remember: your choice must go in the correct step in the chain!"
     }
 ]
 

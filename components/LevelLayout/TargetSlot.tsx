@@ -18,6 +18,7 @@ const TargetSlot = forwardRef<TargetSlotRef, { answer: string; isGroupSlot?: boo
     const refDiv = useRef<HTMLDivElement | null>(null);
     const playCorrectSound = useSoundEffect('/sounds/correct.mp3');
     const playIncorrectSound = useSoundEffect('/sounds/incorrect.mp3');
+    const playClickSound = useSoundEffect('/sounds/button2.mp3');
 
     useImperativeHandle(ref, () => ({
         checkAnswer: (selected: string, validAnswers: string[] = []) => {
@@ -38,7 +39,7 @@ const TargetSlot = forwardRef<TargetSlotRef, { answer: string; isGroupSlot?: boo
         },
         setSelected: () => {
             if (status === 'empty') {
-                playCorrectSound();
+                playClickSound();
                 setStatus('selected');
             }
         },

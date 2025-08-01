@@ -64,7 +64,7 @@ export default function LevelCard({ level, onClick }: { level: number, onClick: 
     return (
         <div
             ref={cardRef}
-            className='relative w-[450px] h-[240px] bg-white rounded-[20px] shadow-md transition-transform cursor-pointer'
+            className='relative w-[450px] h-[240px] bg-white rounded-[20px] shadow-md transition-transform cursor-pointer overflow-hidden'
             onClick={handleClick}
         >
             <p className='text-center text-3xl font-bold text-[#ED9D1A] pt-5'>Press to Begin</p>

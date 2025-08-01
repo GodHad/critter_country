@@ -84,7 +84,7 @@ export default function FreePlayPage() {
               <div
                 key={index}
                 ref={el => {dropSlotRefs.current[index] = el}}
-                className='relative w-full h-full'
+                className='relative h-[120px]'
               >
                 <DropSlot isHighlighted={highlightedSlots.has(index)} />
               </div>
@@ -135,7 +135,7 @@ export default function FreePlayPage() {
 
 interface DraggableImageProps {
   name: string;
-  dropZoneRef: React.RefObject<HTMLDivElement | null>; // <- allow null
+  dropZoneRef: React.RefObject<HTMLDivElement | null>;
   dropSlotRefs: React.RefObject<(HTMLDivElement | null)[]>;
   setHighlightedSlots: React.Dispatch<React.SetStateAction<Set<number>>>;
   imageSlotMap: Record<string, number | null>;
@@ -166,10 +166,10 @@ function DraggableImage({ name, dropZoneRef, dropSlotRefs, setHighlightedSlots, 
             if (!slot) return;
             const slotBox = slot.getBoundingClientRect();
             const isInside =
-            box.left >= slotBox.left &&
-            box.right <= slotBox.right &&
-            box.top >= slotBox.top &&
-            box.bottom <= slotBox.bottom;
+            box.left >= slotBox.left -10 &&
+            box.right <= slotBox.right + 10 &&
+            box.top >= slotBox.top - 10 &&
+            box.bottom <= slotBox.bottom + 10;
 
             if (isInside) matchedSlot = index;
         });
@@ -187,7 +187,7 @@ function DraggableImage({ name, dropZoneRef, dropSlotRefs, setHighlightedSlots, 
       onRelease() {
         const box = container.getBoundingClientRect();
         const zone = dropZoneRef.current!.getBoundingClientRect();
-        const isInsideDropzone = box.left >= zone.left && box.right <= zone.right && box.top >= zone.top && box.bottom <= zone.bottom;
+        const isInsideDropzone = box.left >= zone.left-40 && box.right <= zone.right + 40 && box.top >= zone.top - 40 && box.bottom <= zone.bottom + 40;
 
         if (!isInsideDropzone) {
           gsap.to(container, {
@@ -212,6 +212,39 @@ function DraggableImage({ name, dropZoneRef, dropSlotRefs, setHighlightedSlots, 
               }
             }
           });
+        }
+        let closestSlot: number | null = null;
+        let closetDistance = Infinity;
+
+        dropSlotRefs.current.forEach((slot, index) => {
+          if(!slot) return;
+          const slotBox = slot.getBoundingClientRect();
+          const dx = (box.left + box.width/2) - (slotBox.left + slotBox.width/2);
+          const dy = (box.top + box.height/2) - (slotBox.top + slotBox.height/2);
+          const distance = Math.sqrt(dx*dx + dy*dy);
+          if(distance < 35 && distance < closetDistance) {
+            closetDistance = distance;
+            closestSlot = index;
+          }
+        })
+
+        if(closestSlot != null) {
+          const targetSlot = dropSlotRefs.current[closestSlot]!.getBoundingClientRect();
+          const deltaX = (targetSlot.left + targetSlot.width/2) - (box.left + box.width/2);
+          const deltaY = (targetSlot.top + targetSlot.height/2) - (box.top + box.height/2);
+          gsap.to(container, {
+            x:`+=${deltaX}`,
+            y: `+=${deltaY}`,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+          setImageSlotMap(prev => {
+            const updated = { ...prev, [name]: closestSlot };
+            const newHighlighted = new Set(Object.values(updated).filter(v => v !== null));
+            setHighlightedSlots(newHighlighted);
+            return updated;
+          });
+          img.src = `/images/animals_ns/${name}_NS.png`;
         } else {
           img.src = `/images/animals_ns/${name}_NS.png`;
         }
