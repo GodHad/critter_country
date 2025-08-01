@@ -24,7 +24,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
     }, [pathname, router]);
 
     return (
-        <div className='w-screen h-screen flex items-center justify-center overflow-hidden'>
+        <div className='w-screen h-screen flex items-center justify-center overflow-hidden' style={{ height: '100dvh'}}>
             <Image 
                 src='/images/home/Background.jpg'
                 alt="backgrond"
@@ -32,7 +32,7 @@ export default function PageWrapper({ children }: { children: React.ReactNode })
                 priority
                 className="absolute z-0 object-cover w-full h-full"
             />
-            <div ref={ref} className='relative z-10 aspect-[16/9] w-full max-w-[1920px] overflow-hidden px-25 py-25'>
+            <div ref={ref} className='relative z-10 aspect-[16/9] w-full max-w-[1920px] max-h-[1080px] overflow-hidden px-25 py-25'>
                 {children}
             </div>
         </div>
