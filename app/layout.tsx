@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} font-outfit ${alfa.variable} ${corndog.variable}`}>
-      <body>
+      <body className="!w-screen !h-screen">
         {children}
       </body>
     </html>
